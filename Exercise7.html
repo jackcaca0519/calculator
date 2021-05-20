@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<style type="text/css">
+		button{
+			width: 70px;
+			height: 25px;
+			margin: 0.2em 0.1em;
+		}
+	</style>
+	<script type="text/javascript">
+	var num,Result=null;
+	function inputlayout(num) {
+		document.getElementById('log').value+=document.getElementById(num).value;
+	}
+	function result() {
+		Result=eval(document.getElementById('log').value);
+		document.getElementById('p1').innerHTML=Result;
+	}
+	function Clear() {
+		Result=null;
+		document.getElementById('p1').innerHTML=null;
+		document.getElementById('log').value=null;
+	}
+	function check(){
+		switch(true){
+			case Result==null:
+				document.getElementById('p1').innerHTML="No result yet";
+				break;
+			case Result==0:
+				document.getElementById('p1').innerHTML="Zero";
+				break;
+			case Result<0:
+				document.getElementById('p1').innerHTML="Negative";
+				break;
+			case Result%3==0:
+				document.getElementById('p1').innerHTML="Positive(3)";
+				break;
+			case Result>0:
+				document.getElementById('p1').innerHTML="Positive";
+				break;
+			default:
+				break;
+		}
+	}
+	</script>
+</head>
+<body style="font-family: serif;">
+	<h2>My Calculator</h2>
+	<pre>Result:    <p id="p1" style="display: inline;"></p></pre>
+	<pre>Input:     <input type="text" id="log" style="border-style: none;">
+	</pre>
+	<button value="Clear" onclick="Clear()">Clear</button>
+	<button id="(" value="(" onclick="inputlayout(this.id)">(</button>
+	<button id=")" value=")" onclick="inputlayout(this.id)">)</button>
+	<br>
+	<button id="1" value="1" onclick="inputlayout(this.id)">1</button>
+	<button id="2" value="2" onclick="inputlayout(this.id)">2</button>
+	<button id="3" value="3" onclick="inputlayout(this.id)">3</button>
+	<button id="+" value="+" onclick="inputlayout(this.id)">+</button>
+	<br>
+	<button id="4" value="4" onclick="inputlayout(this.id)">4</button>
+	<button id="5" value="5" onclick="inputlayout(this.id)">5</button>
+	<button id="6" value="6" onclick="inputlayout(this.id)">6</button>
+	<button id="-" value="-" onclick="inputlayout(this.id)">-</button>
+	<br>
+	<button id="7" value="7" onclick="inputlayout(this.id)">7</button>
+	<button id="8" value="8" onclick="inputlayout(this.id)">8</button>
+	<button id="9" value="9" onclick="inputlayout(this.id)">9</button>
+	<button id="*" value="*" onclick="inputlayout(this.id)">*</button>
+	<br>
+	<button id="." value="." onclick="inputlayout(this.id)">.</button>
+	<button id="0" value="0" onclick="inputlayout(this.id)">0</button>
+	<button value="=" onclick="result()">=</button>
+	<button id="/" value="/" onclick="inputlayout(this.id)">÷</button>
+	<br>
+	<button style="width: 280px;position: relative;left: 10px;" onclick="check()">Check My Result</button>
+</body>
+</html>
